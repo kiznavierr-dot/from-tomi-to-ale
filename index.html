@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILY Virus - Tomi's Version (From the Vault)</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(#00111a, #00334d);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      /* Snowflakes */
+      /* Snowflake style */
+      .snowflake {
+        position: fixed;
+        top: -10px;
+        color: white;
+        font-size: 1em;
+        animation: fall linear forwards;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* Falling animation */
+      @keyframes fall {
+        to {
+          transform: translateY(calc(100vh - var(--pile-height, 0px)));
+        }
+      }
+
+      /* Snow pile container */
+      #snowPile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        height: 0;
+        z-index: 9998;
+        transition: height 0.3s ease;
+      }
+
+      .village {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: transparent;
+        z-index: 6;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        pointer-events: none;
+      }
+      .village svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Card container */
+      .card {
+        width: 800px;
+        height: 500px;
+        perspective: 1500px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      /* Card cover */
+      .cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: crimson;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        line-height: 1.4;
+        transform-origin: left;
+        transition: transform 1s ease;
+        backface-visibility: hidden;
+        border-radius: 5px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        z-index: 2;
+      }
+
+      /* Inside message */
+      .inside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        color: #333;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: left;
+        z-index: -1;
+        border-radius: 5px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: crimson transparent;
+      }
+
+      .inside h2 {
+        color: crimson;
+        margin-top: 0;
+      }
+
+      .peppermint-text {
+        text-transform: uppercase;
+        background: repeating-linear-gradient(
+          45deg,
+          #ff0000 0 15px,
+          #18772e 15px 30px
+        );
+        background-size: 60px 60px;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: candy-stripes 2s linear infinite;
+      }
+
+      @keyframes candy-stripes {
+        0% { background-position: 0 0; }
+        100% { background-position: 60px 0; }
+      }
+
+      /* Open state */
+      .card.open .cover {
+        transform: rotateY(-180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Card -->
+    <div class="card" onclick="this.classList.toggle('open')">
+      <div class="cover">
+        <div><h1>🎄Merry Christmas🎄</h1></div>
+        <div>From: Tomi<br> To: Ale</div>
+        <div><h6>(Click to flip 😉)</h6></div>
+        <audio controls autoplay loop>
+          <source src="12-to-12.mp3" type="audio/mpeg">
+          <source src="12-to-12.ogg" type="audio/ogg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      <div class="inside">
+        <h2 class="peppermint-text">Dearest Ale,</h2>
+        <p>
+          By the time you receive this letter, Christmas is already over.<br>
+          I was supposed to give this to you before you ended your stream on Christmas Day. I had a lot of “wtf” moments during Christmas. 
+          Do you keep my letters somewhere? Knowing you, they’re probably just buried somewhere in your lappy/email/Discord chat LMAO.
+          Ngl, my letters are evolving, don’t you think??? HAHAHA. Be ready! who knows, the next one might be Augmented Reality or a hologram 😂 
+          nothing is impossible to me when I put my mind and heart to it 💪🏻😉
+        </p>
+        <p>
+          <b class="peppermint-text">Merry Christmas, Ale! You’re still the dearest to me, congratulazioni!!! haha</b><br>
+          I hope that when the running shoes finally arrive, they’ll make you smile and get excited 🏃🏻‍♂️‍➡️<br>
+          <b>ONE REQUEST THO!!!</b> When you receive it, please unbox it during stream! I want to see it for the first time with you~ or else I'll refund it HAHAHA 
+        </p>
+        <p>
+          Most importantly, I wholeheartedly wish that whenever you wear those running shoes, they bring you only to places you want to be, and keep you safe and sound.
+          Also, these shoes will serve as my proxy IRL. My presence will always be with youuuuuuuuu!~ I don’t know if I just cursed you or what, but it'll be Eywa's will!! HAHAHAH<br>
+          I’m excited for everything you’ll achieve in 2026. Just know that I’ll keep supporting and cheering you on, whatever goals you have in store for next year 💙 
+          Make sure you keep chasing your dreams and grinding all the way up! When it gets tough, I’ll be here for you. But don’t be too weak, make me proud 💅🏻 lmao
+          <br>
+          I want to see you play in chess tournaments and enjoy your fitness journey to Hyrox!~ (I will still beat you to having six-pack abs HAHAH)
+        </p>
+        <p>
+          I watched your Christmas season stream and heard your answer to “Who are you most thankful for?” I’m quite sad that you didn’t brag about me or even bro Tech. 
+          It wasn’t just Mustafo who was there when you first started streaming! 
+          But I understand... you’re a streamer, and you don’t want people to feel jealous and unfollow you. Especially, those who like you 😂
+          It’s tough to handle all of us and try to satisfy everyone, isn’t it? If I'll be honest, it sometimes scare me that I'll lose you due to your popularity soon.<br> 
+          I think it’s okay to have some favorites, Ale. I know you already told me before that I'm important to you and you are to me too 💙
+          Remember this, Ale: if someone asks me who I’m most thankful for this year, I will not hesitate to brag about you to everyone. 
+          You're still the football player I will name when I meet my Japanese colleagues 😂
+        </p>
+        <p>
+          With that said, thank you for everything, Ale! I fully survived this year with you around. Your presence and company helped me during my loneliest times. 
+          I hope we can continue this for a loooooooooooooong time. Don’t you ever let go, okay? Make a pinky promise NOW! NOW! NOW! 😂
+        </p>
+        <p>
+          I love youuuuuuuuuu 3k, Ale! (dw, I’m not gonna flirt with you if that’s something you don’t want. I’m not your type, and commitment isn’t your focus in life right now. 
+          You’re busy building your life anyway. What I’m trying to say is: I hope we don’t get awkward when we exchange “I love you”s even as F.R.I.E.N.D.S 😂)<br>
+          If you find someone romantically next year, tell me! I’ll pass down my MOD crown to her and finally retire. I’m not gonna third‑wheel your relationship lol
+        </p>
+        <p>
+          <i>P.S. Don’t you dare reuse this HTML card for anyone else! I’ll be devastated. Unless it's me and you want to beat me on who can create the best webpage in the history HAHAHHA
+            Also, advance Happy New Yearrrr! 🥳💙 I'm excited to spend 2026 with you!! LET'S SHINEEEEEEEEEEE TOGETHERRRRRR! 💪🏻✨
+          </i>
+        </p>
+        <p><h3>Con amore,  
+        <br>☃️ <strong>Tomi</strong></h3></p>
+      </div>
+    </div>
+
+    <div class="village">
+      <svg viewBox="0 0 800 120" preserveAspectRatio="none">
+        <!-- Ground -->
+        <rect x="0" y="100" width="800" height="20" fill="white" />
+
+        <!-- House 1 -->
+        <polygon points="20,100 50,60 80,100" fill="#222" />
+        <rect x="35" y="80" width="30" height="20" fill="#444" />
+        <rect x="45" y="85" width="10" height="10" fill="yellow" />
+
+        <!-- Tree -->
+        <polygon points="110,100 130,70 150,100" fill="#0a3" />
+        <polygon points="115,85 130,55 145,85" fill="#0a3" />
+        <rect x="127" y="100" width="6" height="10" fill="#542" />
+
+        <!-- Church -->
+        <polygon points="200,100 230,60 260,100" fill="#333" />
+        <rect x="215" y="80" width="30" height="20" fill="#555" />
+        <rect x="225" y="85" width="10" height="10" fill="yellow" />
+        <rect x="228" y="40" width="4" height="20" fill="#ccc" />
+        <polygon points="230,40 240,30 250,40" fill="#ccc" />
+
+        <!-- House 2 -->
+        <polygon points="300,100 330,65 360,100" fill="#222" />
+        <rect x="315" y="80" width="30" height="20" fill="#444" />
+        <rect x="325" y="85" width="10" height="10" fill="yellow" />
+
+        <!-- Tree -->
+        <polygon points="400,100 420,70 440,100" fill="#0a3" />
+        <polygon points="405,85 420,55 435,85" fill="#0a3" />
+        <rect x="417" y="100" width="6" height="10" fill="#542" />
+
+        <!-- House 3 -->
+        <polygon points="500,100 530,60 560,100" fill="#222" />
+        <rect x="515" y="80" width="30" height="20" fill="#444" />
+        <rect x="525" y="85" width="10" height="10" fill="yellow" />
+
+        <!-- Tree -->
+        <polygon points="600,100 620,70 640,100" fill="#0a3" />
+        <polygon points="605,85 620,55 635,85" fill="#0a3" />
+        <rect x="617" y="100" width="6" height="10" fill="#542" />
+
+        <!-- House 4 -->
+        <polygon points="700,100 730,65 760,100" fill="#222" />
+        <rect x="715" y="80" width="30" height="20" fill="#444" />
+        <rect x="725" y="85" width="10" height="10" fill="yellow" />
+      </svg>
+    </div>
+
+    <script>
+      // Create falling snow
+      let pileHeight = 0; // current pile height in px
+      const pile = document.createElement('div');
+      pile.id = 'snowPile';
+      document.body.appendChild(pile);
+
+      function createSnowflake() {
+        const snow = document.createElement('div');
+        snow.className = 'snowflake';
+        snow.textContent = '❄️';
+
+        // Random horizontal position
+        snow.style.left = Math.random() * 100 + 'vw';
+        // Random size
+        snow.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        // Random opacity
+        snow.style.opacity = Math.random();
+        // Pass pile height to animation
+        snow.style.setProperty('--pile-height', pileHeight + 'px');
+        // Random fall duration
+        const duration = Math.random() * 3 + 2;
+        snow.style.animationDuration = duration + 's';
+
+        document.body.appendChild(snow);
+
+        // When snowflake finishes falling, add to pile
+        setTimeout(() => {
+          snow.remove();
+        }, duration * 7000);
+      }
+
+      // Create snowflakes continuously
+      setInterval(createSnowflake, 50); // smaller = heavier snow
+    </script>
+
+  </body>
+</html>
