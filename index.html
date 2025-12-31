@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2025</title>
+<style>
+  body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(#00111a, #00334d);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+  /* Fireworks canvas */
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+/* Card container */
+  .card {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 100px auto;
+    perspective: 1000px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  /* Card faces */
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+
+  .card.open .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .card-front {
+    background: linear-gradient(135deg, #ffcc00, #ff6600);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.4em;
+    text-align: center;
+  }
+
+  .card-back {
+    background: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.5em;
+    text-align: left;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(20, 67, 220) transparent;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="card" id="nyCard">
+  <div class="card-inner">
+    <div class="card-front">
+        <div><h1>🎆Happy New Year🎆</h1></div>
+        <div><h2>From: Tomi<br> To: Ale</h2></div>
+        <div><h3>(Open)</h3></div>
+    </div>
+    <div class="card-back">
+      <h2>Dearest Ale,</h2>
+      <p>I’m here again, but before anything else, there’s no surprise this time, just a letter (I hope you're not disappointed lol)
+        It's almost 8 months since we first met in your stream.
+        I've been thinking a lot about how much has changed since we first connected, and a lot has changed, really.
+        Regardless of the ups and downs, I cherish every moment we've spent together.
+      </p>
+      <p>I just want to say thank you for being such an amazing person in my life. Your company and support have meant the world to me even when things are also busy and tough for you at times.
+        I look forward to many more adventures together in the coming year. Wishing you a fantastic 2026 filled with joy, success, and all the things that make you happy.
+        <br>Happy New Year, Ale!
+      </p>
+      <p>Keep chasing your dreams, Ale! I'll be there with you every step of the way from afar.</p>
+      <p>Con amore,<br>💙 Tomi</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Card click toggle */
+document.getElementById('nyCard').addEventListener('click', function() {
+  this.classList.toggle('open');
+});
+
+/* Fireworks animation */
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function createFirework(x, y) {
+  const colors = ['#ff0043', '#14fc56', '#1e90ff', '#ffff33', '#ff6600'];
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: x,
+      y: y,
+      angle: Math.random() * 2 * Math.PI,
+      speed: Math.random() * 5 + 2,
+      radius: 2,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 100
+    });
+  }
+}
+
+function updateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p, i) => {
+    p.x += Math.cos(p.angle) * p.speed;
+    p.y += Math.sin(p.angle) * p.speed;
+    p.life--;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+}
+
+function loop() {
+  if (Math.random() < 0.05) {
+    createFirework(Math.random() * canvas.width, Math.random() * canvas.height / 2);
+  }
+  updateParticles();
+  requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
